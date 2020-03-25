@@ -1,0 +1,7 @@
+{
+    "name" : "my First node app -- development cycle ",
+    "mail" : {
+       "host" : "dev-mail-server"
+    }
+    
+}
