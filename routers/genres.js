@@ -17,11 +17,14 @@ const genersSchema = new mongoose.Schema({
  });
  const Gener = mongoose.model('gener',genersSchema) ;
 
+ var genres = [
+   {id : 1, name : "test1", auther : "Ahmed saber" }
+ ];
 
  async function get_geners()
  {
-    const geners = await Gener.find( ) ; 
-    return geners ;
+    const genrs = await Gener.find( ) ; 
+    return genrs ;
  }
  async function add_gener(req)
  { 
@@ -30,12 +33,12 @@ const genersSchema = new mongoose.Schema({
       name: req.name,
       auther: req.auther,
     });
-    genre.save() ;
+    gener.save() ;
  }
  
 
 router.get('/', (req, res) => {
-    console.log("jkdsjknhjdsk");
+    //console.log("jkdsjknhjdsk");
     res.send(get_geners());
 });
   
@@ -44,10 +47,10 @@ router.post('/', (req, res) => {
       if (error) return res.status(400).send(error.details[0].message);
 
       const genre = {
-        id: genres.length + 1,
         name: req.body.name
       };
-      genres.push(genre);
+      //genres.push(genre);
+      add_gener(req) ;
       res.send(genre);
 });
   
